@@ -1,0 +1,32 @@
+{
+  "name": "crypto-bit",
+  "version": "1.0.0",
+  "description": "Cryptocurrency and Bitcoin Live Feed and Chart Averages",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\\"
+  },
+  "keywords": [
+    "project",
+    "node",
+    "mysql",
+    "crypto",
+    "stocks",
+    "repo",
+    "repository"
+  ],
+  "author": "Jacob Coe, Tyler Wilson, Tyler Stephens, Melanie West",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.1",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0",
+    "nodemon": "^1.12.1",
+    "path": "^0.12.7"
+  }
+}
