@@ -3,7 +3,7 @@ var express = require('express');
 var route = express.Router();
 
 // Import the model 
-let destiny = require('../models/destiny.js');
+var destiny = require('../models/destiny.js');
 
 // Create the routes and associated logic
 route.get('/', function(req, res) {

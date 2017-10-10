@@ -14,7 +14,7 @@ if(process.env.JAWSDB_URL){
     host     : 'localhost',
     user     : 'root',
     password : '', 
-    database : '' //...whatever you name the database
+    database : 'crypto' //...whatever you name the database
   });
 }
 
