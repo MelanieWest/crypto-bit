@@ -11,7 +11,7 @@ CREATE TABLE currency
     predict_val INT NOT NULL, 
     emot BOOLEAN DEFAULT FALSE,
     act_val INT NOT NULL,
-    exch_date DATE ON UPDATE CURRENT_DATE,
+    exch_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
 
