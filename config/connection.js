@@ -2,7 +2,7 @@
 var mysql = require('mysql');
 
 // Connect mysql
-var connection;
+function connection(){
 
 
 if(process.env.JAWSDB_URL){
@@ -14,10 +14,9 @@ if(process.env.JAWSDB_URL){
     host     : 'localhost',
     user     : 'root',
     password : '', 
-    database : 'crypto' //...whatever you name the database
+    database : 'crypto'
   });
 }
-
-
+}
 // Export the Connection
 module.exports = connection;

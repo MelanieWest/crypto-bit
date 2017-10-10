@@ -18,7 +18,7 @@ route.get('/', function(req, res) {
 
 route.post('/value', function(req, res) {
   crypto.insertOne([
-    'raid_name'
+    'coin_name'
   ], [
     req.body.raid_name
   ], function(data) {
