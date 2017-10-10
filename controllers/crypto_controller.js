@@ -16,16 +16,19 @@ route.get('/', function (req, res) {
   });
 });
 
-route.post('/api/value', function (req, res) {
-  crypto.updateOne("currency", )
-  console.log(res.data)
-});
+// route.post('/value', function(req, res) {
+//   crypto.insertOne(
+//     {coin_name : req.body.coin_name, act_val : btcVal, }
+//   , function(data) {
+//     res.redirect('/');
+//   });
+// });
 
 route.put('/value/:id', function (req, res) {
   var c = 'id = ' + req.params.id;
 
   crypto.updateOne({
-    defeated: true
+    emot: " " + 0
   }, c, function (data) {
     res.redirect('/');
   });
