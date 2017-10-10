@@ -1,8 +1,7 @@
-
 //ORM TEMPLATE TO WORK WITH
 
 // Require the file connection
-var connection = require('../config/connection.js');
+var connection = require('./connection.js');
 
 // Function so you can use mysql
 function printQ(num) {
