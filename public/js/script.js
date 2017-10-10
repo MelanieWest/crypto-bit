@@ -143,6 +143,7 @@ function fetchBtc() {
       console.log(response.USD);
       currentVal.push(response.USD)
       btcVal = (response.USD)
+
       $.ajax({
         url: "/api/value",
         method: "POST",
