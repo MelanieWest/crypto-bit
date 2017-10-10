@@ -22,7 +22,7 @@ function objToSql(ob) {
 	return arr.toString();
 };
 
-var orm = {
+var crypto = {
 	selectAll: function (tableInput, cb) {
 		var queryString = 'SELECT * FROM ' + tableInput;
 
