@@ -12,12 +12,22 @@
               background-color: grey;
               height: 100px;
           } 
-          ul{
-              display: inline-block;
+           ul{
               text-align: center;
           } 
+          ul li{
+             display: inline;
+             padding: 5px;
+          }
+          #left, #right{
+              background-color: azure;
+              height: 280px;
+              width: 250px;
+              margin: 10px;
+          }
           a{
-
+              float: right;
+              margin: 10px 100px;
           }
         </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -29,8 +39,10 @@
 	<title>Cryptocurrency</title>
 	</head>
 	<body>
+        <div class = "container">
         <header>Cryptocurrency Predictor</header>>
 		{{{ body }}}
+        </div>
         <footer> 
             <a href ="https://www.reddit.com/r/CryptoMarkets/" style="color:green">Reddit Cryptomarkets</a>
             <ul>
