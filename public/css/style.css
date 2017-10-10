@@ -1,0 +1,27 @@
+header{
+    font-size: 40px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: grey;
+    height: 100px;
+} 
+ ul{
+    text-align: center;
+} 
+ul li{
+   display: inline;
+   padding: 5px;
+}
+#left, #right{
+    background-color: azure;
+    height: 280px;
+    width: 250px;
+    margin: 10px;
+}
+a{
+    float: right;
+    margin: 10px 100px;
+}

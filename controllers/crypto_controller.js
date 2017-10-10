@@ -3,11 +3,11 @@ var express = require('express');
 var route = express.Router();
 
 // Import the model 
-let destiny = require('../models/destiny.js');
+var crypto = require('../models/crypto.js');
 
 // Create the routes and associated logic
 route.get('/', function(req, res) {
-  destiny.selectAll(function(data) {
+  crypto.selectAll(function(data) {
     var hbsObject = {
       raids: data
     };
@@ -16,8 +16,8 @@ route.get('/', function(req, res) {
   });
 });
 
-route.post('/raids', function(req, res) {
-  destiny.insertOne([
+route.post('/value', function(req, res) {
+  crypto.insertOne([
     'raid_name'
   ], [
     req.body.raid_name
@@ -26,10 +26,10 @@ route.post('/raids', function(req, res) {
   });
 });
 
-route.put('/raids/:id', function(req, res) {
+route.put('/value/:id', function(req, res) {
   var c = 'id = ' + req.params.id;
 
-  destiny.updateOne({
+  crypto.updateOne({
     defeated: true
   }, c, function(data) {
     res.redirect('/');

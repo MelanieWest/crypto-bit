@@ -23,9 +23,11 @@
   "author": "Jacob Coe, Tyler Wilson, Tyler Stephens, Melanie West",
   "license": "ISC",
   "dependencies": {
+    "co": "^4.6.0",
     "express": "^4.16.1",
     "express-handlebars": "^3.0.0",
     "mysql": "^2.15.0",
+    "node-chartist": "^1.0.5",
     "nodemon": "^1.12.1",
     "path": "^0.12.7"
   }
