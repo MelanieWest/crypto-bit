@@ -1,13 +1,10 @@
 USE crypto;
 
 INSERT INTO currency (coin_name, predict_val, emot, act_val, exch_date) 
-VALUES ("Example", 100, false, 105, CURRENT_TIMESTAMP);
+VALUES ("Bitcoin", 100, false, 105, CURRENT_TIMESTAMP);
 
 INSERT INTO currency (coin_name, predict_val, emot, act_val, exch_date) 
-VALUES ("Example", 100, false, 105, CURRENT_TIMESTAMP);
+VALUES ("Ethereum", 100, false, 105, CURRENT_TIMESTAMP);
 
 INSERT INTO currency (coin_name, predict_val, emot, act_val, exch_date) 
-VALUES ("Example", 100, false, 105, CURRENT_TIMESTAMP);
-
-INSERT INTO currency (coin_name, predict_val, emot, act_val, exch_date) 
-VALUES ("Example", 100, false, 105, CURRENT_TIMESTAMP);
+VALUES ("Litecoin", 100, false, 105, CURRENT_TIMESTAMP);
