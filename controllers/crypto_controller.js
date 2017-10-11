@@ -4,6 +4,7 @@ var route = express.Router();
 var connection = require("../config/connection.js");
 var mysql = require("mysql");
 var crypto = require('../models/crypto.js');
+var updateInfo = require('../public/js/script')
 
 //Create the routes and associated logic
 route.get('/', function (req, res) {
@@ -29,6 +30,15 @@ route.put('/value/:id', function (req, res) {
 
   crypto.updateOne({
     emot: " " + 0
+  }, c, function (data) {
+    res.redirect('/');
+  });
+});
+
+route.put('/current/:id', function (req, res) {
+  var c = 'id = ' + 1
+  crypto.updateOne("currency", {
+    "act_val": updateInfo.btcVal,
   }, c, function (data) {
     res.redirect('/');
   });

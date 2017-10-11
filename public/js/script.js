@@ -73,6 +73,10 @@ function fetchLtc() {
 fetchBtc();
 fetchEth();
 fetchLtc();
+var updateInfo = {
+  "btcVal": btcVal,
+  "etcVal": ethVal,
+  "ltcVal": ltcVal
+}
 
-
-// module.exports = currentVal;
+module.exports = updateInfo;
