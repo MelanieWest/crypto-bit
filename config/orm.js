@@ -61,4 +61,4 @@ var crypto = {
 	}
 };
 
-module.exports = orm;
+module.exports = crypto;
