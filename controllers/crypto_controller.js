@@ -25,24 +25,6 @@ route.get('/', function (req, res) {
 //   });
 // });
 
-route.put('/value/:id', function (req, res) {
-  var c = 'id = ' + req.params.id;
 
-  crypto.updateOne({
-    emot: " " + 0
-  }, c, function (data) {
-    res.redirect('/');
-  });
-});
 
-route.put('/current/:id', function (req, res) {
-  var c = 'id = ' + 1
-  crypto.updateOne("currency", {
-    "act_val": updateInfo.btcVal,
-  }, c, function (data) {
-    res.redirect('/');
-  });
-});
-
-// Export routes for server.js to use.
 module.exports = route;
