@@ -6,9 +6,8 @@ var connection = mysql.createConnection({
   port: 3306,
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: 'root',
   database: 'crypto'
-
 });
 
 
@@ -18,10 +17,10 @@ if (process.env.JAWSDB_URL) {
 } else {
   //else deploy locally
   connect = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '', 
-    database : 'crypto'
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'crypto'
   });
 }
 
