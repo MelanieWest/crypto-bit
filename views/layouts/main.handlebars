@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        
-        <style>
-          header{
-              font-size: 40px;
-              position: absolute;
-              top: 0px;
-              left: 0px;
-              width: 100%;
-              text-align: center;
-              background-color: grey;
-              height: 100px;
-        #body{
-            height: 800px;
-            width: 1200px;
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+
+    <style>
+        header {
+            font-size: 40px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            text-align: center;
+            background-color: grey;
+            height: 100px;
+            #body {
+                height: 800px;
+                width: 1200px;
+            }
         }
-          } 
-           ul{
-              text-align: center;
-          } 
-          ul li{
-             display: inline;
-             padding: 5px;
-          }
-          footer{
-              position: absolute;
-              bottom: 10px;
-          }
 
-          a{
-              margin: 30px 50px;
-          }
+        ul {
+            text-align: center;
+        }
 
-        </style>
-    <script
-        src="https://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
-	<meta charset="UTF-8">
+        ul li {
+            display: inline;
+            padding: 5px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 10px;
+        }
+
+        a {
+            margin: 30px 50px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
     <script src="js/script.js"></script>
 
-	<title>Cryptocurrency</title>
+    <title>Cryptocurrency</title>
 
-	</head>
-	<body>
-        <div class = "container">       
-            <header>Cryptocurrency Predictor</header>>
-            <div id = "body" class = "row">
+</head>
 
-                {{{ body }}}
-                
-            </div>
+<body>
+    <div class="container">
+        <header>Cryptocurrency Predictor</header>>
+        <div id="body" class="row">
 
-        <footer> 
-                <a href ="https://www.reddit.com/r/CryptoMarkets/" target="_blank" style="color:green">Reddit Cryptomarkets</a>
-                <a href ="https://www.reddit.com/r/ethtraderpro/" target="_blank" style="color:green">Etherium Trader</a>
-                <a href ="https://www.reddit.com/r/Bitcoin/" target="_blank" style="color:green">Reddit Bitcoin</a>
+            {{{ body }}}
+
+        </div>
+
+        <footer>
+            <a href="https://www.reddit.com/r/CryptoMarkets/" target="_blank" style="color:green">Reddit Cryptomarkets</a>
+            <a href="https://www.reddit.com/r/ethtraderpro/" target="_blank" style="color:green">Etherium Trader</a>
+            <a href="https://www.reddit.com/r/Bitcoin/" target="_blank" style="color:green">Reddit Bitcoin</a>
             <ul>
                 <li>Jacob Coe</li>
                 <li>Tyler Stephens</li>
@@ -65,6 +67,57 @@
                 <li>Tyler Wilson</li>
             </ul>
         </footer>
-        </div>
-	</body>
+    </div>
+</body>
+<script>
+    function fetchBtc() {
+        $.ajax({
+            url: btcReddit,
+            method: "GET"
+        })
+            .done(function (response) {
+                for (var i = 0; i < 10; i++) {
+                    var JSONBody = JSON.parse(response);
+                    btcInfo = (JSONBody.data.children[i].data.body)
+                    console.log(JSONBody.data.children[i].data.body)
+
+                }
+            });
+    }
+
+    function fetchEth() {
+        $.ajax({
+            url: ethReddit,
+            method: "GET"
+        })
+            .done(function (response) {
+                for (var i = 0; i < 10; i++) {
+                    var JSONBody = JSON.parse(response);
+                    ethInfo = (JSONBody.data.children[i].data.body)
+                    console.log(JSONBody.data.children[i].data.body)
+
+                }
+            });
+    }
+
+    function fetchLtc() {
+        $.ajax({
+            url: ltcReddit,
+            method: "GET"
+        })
+            .done(function (response) {
+                for (var i = 0; i < 10; i++) {
+                    var JSONBody = JSON.parse(response);
+                    ltcInfo = (JSONBody.data.children[i].data.body)
+                    console.log(JSONBody.data.children[i].data.body)
+
+                }
+            })
+    }
+
+    fetchBtc();
+    fetchEth();
+    fetchLtc();
+</script>
+
 </html>
