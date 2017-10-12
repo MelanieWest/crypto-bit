@@ -76,8 +76,9 @@ app.get('/charts', (req, res) => {
      };
      var data = [trace1, trace2];
      var graphOptions = {filename: "Bitcoin", fileopt: "overwrite"};
-     plotly.plot(data, graphOptions, function (err, msg) {
-         console.log(msg);
+    //  plotly.plot(data, graphOptions, function (err, msg) {
+    //      console.log(msg);
+
      });
   
      //create two more tables using random data
@@ -123,8 +124,9 @@ app.get('/charts', (req, res) => {
     };
     var data = [trace1, trace2];
     var graphOptions = {filename: "Etherium", fileopt: "overwrite"};
-    plotly.plot(data, graphOptions, function (err, msg) {
-        console.log(msg);
+    // plotly.plot(data, graphOptions, function (err, msg) {
+    //     console.log(msg);
+
     });
   
   
@@ -170,8 +172,9 @@ app.get('/charts', (req, res) => {
   };
   var data = [trace1, trace2];
   var graphOptions = {filename: "LiteCoin", fileopt: "overwrite"};
-  plotly.plot(data, graphOptions, function (err, msg) {
-      console.log(msg);
+  // plotly.plot(data, graphOptions, function (err, msg) {
+  //     console.log(msg);
+  
   });
   
   
