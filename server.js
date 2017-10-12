@@ -61,7 +61,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 // enable graphing
-// var plotly = require('plotly')("MelanieWest", "JFj7Pjjq1UljWDSHTQMd");
+var plotly = require('plotly')("MelanieWest", "JFj7Pjjq1UljWDSHTQMd");
 
 // Give the server access to routes
 var routes = require('./controllers/crypto_controller.js');
@@ -153,7 +153,7 @@ app.get('/charts', (req, res) => {
      var data = [trace1, trace2];
      var graphOptions = {filename: "Bitcoin", fileopt: "overwrite"};
      plotly.plot(data, graphOptions, function (err, msg) {
-         console.log(msg);
+  //       console.log(msg);
     });
   
   } //end of bitcoin actions
@@ -196,9 +196,9 @@ app.get('/charts', (req, res) => {
     };
     var data = [trace1, trace2];
     var graphOptions = {filename: "Etherium", fileopt: "overwrite"};
-    // plotly.plot(data, graphOptions, function (err, msg) {
-    //     console.log(msg);
-    //});
+    plotly.plot(data, graphOptions, function (err, msg) {
+ //       console.log(msg);
+    });
   
   }   // end of ethereum block
   
@@ -245,7 +245,7 @@ app.get('/charts', (req, res) => {
   };
   var data = [trace1, trace2];
   var graphOptions = {filename: "LiteCoin", fileopt: "overwrite"};
-    console.log(msg);
+  //  console.log(msg);
   plotly.plot(data, graphOptions, function (err, msg) {
     
   });
