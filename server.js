@@ -130,7 +130,8 @@ app.get('/charts', (req, res) => {
                   break;
                 default:
                   data12y[ii] = 0;
-              } // end of cases for prediction rendering
+              } // end of switch cases for prediction rendering
+
           }   //end of block that fills arrays for graphing
           
          
@@ -175,6 +176,7 @@ app.get('/charts', (req, res) => {
           default:
             data22y[jj] = 0;
         } // end of cases for prediction rendering
+
       }   //end of block that fills arrays for graphing
       
         
@@ -193,9 +195,9 @@ app.get('/charts', (req, res) => {
         };
         var data = [trace1, trace2];
         var graphOptions = {filename: "Etherium", fileopt: "overwrite"};
-        // plotly.plot(data, graphOptions, function (err, msg) {
-        //     console.log(msg);
-        //});
+        plotly.plot(data, graphOptions, function (err, msg) {
+            console.log(msg);
+        });
       
       }   // end of ethereum block
       
@@ -242,12 +244,12 @@ app.get('/charts', (req, res) => {
       };
       var data = [trace1, trace2];
       var graphOptions = {filename: "LiteCoin", fileopt: "overwrite"};
-      //   console.log(msg);
-      //plotly.plot(data, graphOptions, function (err, msg) {
-      //   
-      //});
+        console.log(msg);
+      plotly.plot(data, graphOptions, function (err, msg) {
+        
+      });
       
-      //});     end of connections (sql query)
+   
       
       }   //end of litecoin block
       
