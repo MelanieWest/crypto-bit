@@ -109,7 +109,7 @@ app.get('/charts', (req, res) => {
     //  plotly.plot(data, graphOptions, function (err, msg) {
     //      console.log(msg);
     //  });
-  
+ 
      //create two more tables using random data
   
      //create random data for coin and boolean values;
@@ -155,7 +155,8 @@ app.get('/charts', (req, res) => {
     var graphOptions = {filename: "Etherium", fileopt: "overwrite"};
     // plotly.plot(data, graphOptions, function (err, msg) {
     //     console.log(msg);
-    });
+
+    //});
   
   
   
@@ -200,8 +201,10 @@ app.get('/charts', (req, res) => {
   };
   var data = [trace1, trace2];
   var graphOptions = {filename: "LiteCoin", fileopt: "overwrite"};
+
 //   plotly.plot(data, graphOptions, function (err, msg) {
 //       console.log(msg);
+
   });
   
   
