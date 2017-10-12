@@ -1,7 +1,9 @@
 // Pull in required dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
-
+var passport;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var session = require("express-session");
 
 var port = process.env.PORT || 5000;
 console.log('its running');
@@ -11,13 +13,41 @@ var app = express();
 // Send content for app
 app.use(express.static(process.cwd() + '/public'));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-// Override with the POST 'method'
+passport.use(new FacebookStrategy({
+    clientID: '108399119919875',
+    clientSecret: '1a122f27c879ffa23f0bb2c1a04f7b2b',
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
 
+app.get('/auth/facebook/callback',
+passport.authenticate('facebook', { failureRedirect: '/login' }),
+function(req, res) {
+  // Successful authentication, redirect home. 
+  app.get('/auth/facebook',
+  passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'manage_pages'] }));
 
+  new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    profileFields: ['id', 'displayName', 'photos', 'email']
+  }),
+  
+  res.redirect('/');
+});
 // Set view engine
 var exphbs = require('express-handlebars');
 
@@ -76,9 +106,9 @@ app.get('/charts', (req, res) => {
      };
      var data = [trace1, trace2];
      var graphOptions = {filename: "Bitcoin", fileopt: "overwrite"};
-     plotly.plot(data, graphOptions, function (err, msg) {
-         console.log(msg);
-     });
+    //  plotly.plot(data, graphOptions, function (err, msg) {
+    //      console.log(msg);
+    //  });
   
      //create two more tables using random data
   
@@ -123,8 +153,8 @@ app.get('/charts', (req, res) => {
     };
     var data = [trace1, trace2];
     var graphOptions = {filename: "Etherium", fileopt: "overwrite"};
-    plotly.plot(data, graphOptions, function (err, msg) {
-        console.log(msg);
+    // plotly.plot(data, graphOptions, function (err, msg) {
+    //     console.log(msg);
     });
   
   
@@ -170,13 +200,13 @@ app.get('/charts', (req, res) => {
   };
   var data = [trace1, trace2];
   var graphOptions = {filename: "LiteCoin", fileopt: "overwrite"};
-  plotly.plot(data, graphOptions, function (err, msg) {
-      console.log(msg);
+//   plotly.plot(data, graphOptions, function (err, msg) {
+//       console.log(msg);
   });
   
   
-    });
-  });
+    // });
+//   });
   
   
   
