@@ -1,5 +1,3 @@
-var taco = require("./price.js");
-
 var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
 var natural_language_understanding = new NaturalLanguageUnderstandingV1({
     'username': 'a3244273-018e-453a-b3bd-6759f8dcdd09',
