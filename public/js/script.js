@@ -34,7 +34,7 @@ var ethRate = 0;
 var ltcRate = 0;
 
 var btcParameters = {
-  'url': 'https://www.reddit.com/r/BitcoinMarkets/comments/',
+  'url': 'https://www.reddit.com/r/BitcoinMarkets/',
   'features': {
     'sentiment': {}
   }
@@ -45,7 +45,7 @@ natural_language_understanding.analyze(btcParameters, function (err, response) {
     console.log('error:', err);
   else
     // console.log(JSON.stringify(response, null, 2));
-    console.log(JSON.stringify(response.sentiment.document.label))
+    console.log("btc" + JSON.stringify(response.sentiment.document.label))
 
 });
 var ltcParameters = {
@@ -60,7 +60,7 @@ natural_language_understanding.analyze(ltcParameters, function (err, response) {
     console.log('error:', err);
   else
     // console.log(JSON.stringify(response, null, 2));
-    console.log(JSON.stringify(response.sentiment.document.label))
+    console.log("ltc" + JSON.stringify(response.sentiment.document.label))
 
 });
 
@@ -76,24 +76,27 @@ natural_language_understanding.analyze(ethParameters, function (err, response) {
     console.log('error:', err);
   else
     // console.log(JSON.stringify(response, null, 2));
-    console.log(JSON.stringify(response.sentiment.document.label))
+    console.log("eth" + JSON.stringify(response.sentiment.document.label))
 
 });
 var dataSet = [{
     "coin": "bitcoin",
     "price": [4485, 4648, 4830, 4802, 5211],
-    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"]
+    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"],
+    "rating": [1, -1, -1, -1, 1]
 
   },
   {
     "coin": "ethereum",
     "price": [307, 295, 299, 303, 305],
-    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"]
+    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"],
+    "rating": [-1, -1, 1, 1, 1]
   },
   {
     "coin": "litecoin",
     "price": [52.94, 49.72, 50.57, 50.70, 53.62],
-    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"]
+    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"],
+    "rating": [-1, -1, -1, -1, -1]
   }
 ]
 module.exports = dataSet
