@@ -1,31 +1,37 @@
    <style>
- #left, #right{
+ #display{
               background-color: azure;
               top: 150px;
-              height: 280px;
-              width: 250px;
               margin: 10px;
           }
-      
+table{
+    display:none;
+}
+#litecoin,#ethereum,#bitcoin{
+    position: absolute;
+    top: 200px;
+    margin: 20px;
+}      
     </style>
+ <br><br>
 
-    <div class = "row">
-        <div class = "col" id = "left">
-			<div>
-				<a href ="https://plot.ly/~MelanieWest/0" target="_blank" style="color:green">Data Plot</a>
-			</div>
-			<ul>
-				{{#each bitCoin}}
-				<li>
-					<span class="label">Value:</span> {{this.act_val}}</p>
-					<span class="label">Date: </span> {{this.exch_date}}</p>
-				</li>
-				{{/each}}
-			</ul>
-        </div>
-        <div class = "col" id = "right">
-
+    <div class = "col-4" id = "graphs">    
+        <div id="ethereum">
+            <iframe width="400" height="300" frameborder="0" scrolling="no" src="//plot.ly/~MelanieWest/10.embed"></iframe>
         </div>
     </div>
 
+    <div class = "col-4">
+       <div id="bitcoin">
+            <iframe width="400" height="300" frameborder="0" scrolling="no" src="//plot.ly/~MelanieWest/11.embed"></iframe>
+        </div>
+    </div>
+
+    <div class ="col-4">
+       <div id="litecoin">
+            <iframe width="500" height="300" frameborder="0" scrolling="no" src="//plot.ly/~MelanieWest/12.embed"></iframe>
+        </div>
+    </div>
+
+  
     
