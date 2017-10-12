@@ -1,8 +1,6 @@
 global.fetch = require("node-fetch");
 const cc = require("cryptocompare");
-var ethReddit = "https://www.reddit.com/r/ethtrader/comments/.json";
-var btcReddit = "https://www.reddit.com/r/BitcoinMarkets/comments/.json";
-var ltcReddit = "https://www.reddit.com/r/LitecoinMarkets/comments/.json";
+
 var ethVal = [];
 var btcVal = [];
 var ltcVal = [];
@@ -25,57 +23,59 @@ cc.price('BTC', 'USD')
       })
   })
   .catch(console.error)
+var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
+var natural_language_understanding = new NaturalLanguageUnderstandingV1({
+  'username': 'a3244273-018e-453a-b3bd-6759f8dcdd09',
+  'password': 'nzvzgTKFTfW7',
+  'version_date': '2017-02-27'
+});
+var btcRate = 0;
+var ethRate = 0;
+var ltcRate = 0;
 
+var btcParameters = {
+  'url': 'https://www.reddit.com/r/BitcoinMarkets/comments/',
+  'features': {
+    'sentiment': {}
+  }
+};
 
+natural_language_understanding.analyze(btcParameters, function (err, response) {
+  if (err)
+    console.log('error:', err);
+  else
+    // console.log(JSON.stringify(response, null, 2));
+    console.log(JSON.stringify(response.sentiment.document.label))
 
+});
+var ltcParameters = {
+  'url': 'https://www.reddit.com/r/LitecoinMarkets/comments/',
+  'features': {
+    'sentiment': {}
+  }
+};
 
+natural_language_understanding.analyze(ltcParameters, function (err, response) {
+  if (err)
+    console.log('error:', err);
+  else
+    // console.log(JSON.stringify(response, null, 2));
+    console.log(JSON.stringify(response.sentiment.document.label))
 
+});
 
-// function fetchBtc() {
-//   $.ajax({
-//       url: btcReddit,
-//       method: "GET"
-//     })
-//     .done(function (response) {
-//       for (var i = 0; i < 10; i++) {
-//         var JSONBody = JSON.parse(response);
-//         btcInfo = (JSONBody.data.children[i].data.body)
-//         console.log(JSONBody.data.children[i].data.body)
+var ethParameters = {
+  'url': 'https://www.reddit.com/r/ethtrader/comments/',
+  'features': {
+    'sentiment': {}
+  }
+};
 
-//       }
-//     });
-// }
+natural_language_understanding.analyze(ethParameters, function (err, response) {
+  if (err)
+    console.log('error:', err);
+  else
+    // console.log(JSON.stringify(response, null, 2));
+    console.log(JSON.stringify(response.sentiment.document.label))
 
-// function fetchEth() {
-//   $.ajax({
-//       url: ethReddit,
-//       method: "GET"
-//     })
-//     .done(function (response) {
-//       for (var i = 0; i < 10; i++) {
-//         var JSONBody = JSON.parse(response);
-//         ethInfo = (JSONBody.data.children[i].data.body)
-//         console.log(JSONBody.data.children[i].data.body)
-
-//       }
-//     });
-// }
-
-// function fetchLtc() {
-//   $.ajax({
-//       url: ltcReddit,
-//       method: "GET"
-//     })
-//     .done(function (response) {
-//       for (var i = 0; i < 10; i++) {
-//         var JSONBody = JSON.parse(response);
-//         ltcInfo = (JSONBody.data.children[i].data.body)
-//         console.log(JSONBody.data.children[i].data.body)
-
-//       }
-//     })
-// }
-
-// fetchBtc();
-// fetchEth();
-// fetchLtc();
+});
