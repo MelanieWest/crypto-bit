@@ -93,27 +93,27 @@ natural_language_understanding.analyze(btcParameters, function (err, response) {
                                     console.log("LTC " + prices.USD);
                                     ltcVal.push(prices.USD)
                                     console.log("cc price value" + ethVal[0], btcVal[0], ltcVal[0]);
-                                    var dataSet = [{
+                                    var coinData = [{
                                             "coin": "bitcoin",
                                             "price": [4485, 4648, 4830, 4802, 5211, btcVal[0]],
-                                            "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"],
+                                            "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12", "2017-10-13"],
                                             "rating": [1, -1, -1, -1, 1, btcRate]
 
                                         },
                                         {
                                             "coin": "ethereum",
                                             "price": [307, 295, 299, 303, 305, ethVal[0]],
-                                            "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"],
+                                            "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12", "2017-10-13"],
                                             "rating": [-1, -1, 1, 1, 1, ethRate]
                                         },
                                         {
                                             "coin": "litecoin",
                                             "price": [52.94, 49.72, 50.57, 50.70, 53.62, ltcVal[0]],
-                                            "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"],
+                                            "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12", "2017-10-13"],
                                             "rating": [-1, -1, -1, -1, -1, ltcRate]
                                         }
                                     ]
-                                    console.log(dataSet)
+                                    console.log(coinData)
 
                                 });
                         })
