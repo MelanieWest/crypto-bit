@@ -1,7 +1,7 @@
 // Pull in required dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
-var passport;
+var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var session = require("express-session");
 
@@ -48,6 +48,10 @@ function(req, res) {
   
   res.redirect('/');
 });
+
+
+
+
 // Set view engine
 var exphbs = require('express-handlebars');
 
@@ -57,7 +61,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 // enable graphing
-var plotly = require('plotly')("MelanieWest", "JFj7Pjjq1UljWDSHTQMd");
+// var plotly = require('plotly')("MelanieWest", "JFj7Pjjq1UljWDSHTQMd");
 
 // Give the server access to routes
 var routes = require('./controllers/crypto_controller.js');
@@ -212,5 +216,5 @@ app.get('/charts', (req, res) => {
 //   });
   
   
-  
+});
       

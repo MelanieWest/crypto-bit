@@ -33,9 +33,11 @@
     "node-chartist": "^1.0.5",
     "node-fetch": "^1.7.3",
     "nodemon": "^1.12.1",
+    "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "path": "^0.12.7",
     "plotly": "^1.0.6",
-    "sequelize": "^4.13.8"
+    "sequelize": "^4.13.8",
+    "watson-developer-cloud": "^2.41.1"
   }
 }
