@@ -79,3 +79,20 @@ natural_language_understanding.analyze(ethParameters, function (err, response) {
     console.log(JSON.stringify(response.sentiment.document.label))
 
 });
+var dataSet = [{
+    "coin": "bitcoin",
+    "price": [4485, 4648, 4830, 4802, 5211],
+    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"]
+
+  },
+  {
+    "coin": "ethereum",
+    "price": [307, 295, 299, 303, 305],
+    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"]
+  },
+  {
+    "coin": "litecoin",
+    "price": [52.94, 49.72, 50.57, 50.70, 53.62],
+    "date": ["2017-10-08", "2017-10-09", "2017-10-10", "2017-10-11", "2017-10-12"]
+  }
+]
