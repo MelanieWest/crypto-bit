@@ -15,3 +15,11 @@ CREATE TABLE currency
     PRIMARY KEY (id)
 );
 
+-- CREATE TABLE login
+-- (
+--     id INT NOT NULL AUTO_INCREMENT,
+--     userName VARCHAR(50) NOT NULL,
+--     password VARCHAR(50) 
+--     PRIMARY KEY (id)
+-- );
+
