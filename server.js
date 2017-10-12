@@ -32,7 +32,7 @@ passport.use(new FacebookStrategy({
   }
 ));
 
-app.get('/auth/facebook/callback',
+app.get('/login',
 passport.authenticate('facebook', { failureRedirect: '/login' }),
 function(req, res) {
   // Successful authentication, redirect home. 
