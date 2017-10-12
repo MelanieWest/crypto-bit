@@ -61,7 +61,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 // enable graphing
-// var plotly = require('plotly')("MelanieWest", "JFj7Pjjq1UljWDSHTQMd");
+var plotly = require('plotly')("MelanieWest", "JFj7Pjjq1UljWDSHTQMd");
 
 // Give the server access to routes
 var routes = require('./controllers/crypto_controller.js');
