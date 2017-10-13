@@ -2,6 +2,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+
+var passportGoogle = require("passport-google");
+
 var FacebookStrategy = require('passport-facebook').Strategy;
 var session = require("express-session");
 
@@ -20,34 +23,62 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-passport.use(new FacebookStrategy({
-    clientID: '108399119919875',
-    clientSecret: '1a122f27c879ffa23f0bb2c1a04f7b2b',
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://www.example.com/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
       return cb(err, user);
     });
   }
 ));
 
-app.get('/login',
-passport.authenticate('facebook', { failureRedirect: '/login' }),
-function(req, res) {
-  // Successful authentication, redirect home. 
-  app.get('/auth/facebook',
-  passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'manage_pages'] }));
+app.get('/auth/google',
+passport.authenticate('google', { scope: ['profile'] }));
 
-  new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
-    profileFields: ['id', 'displayName', 'photos', 'email']
-  }),
-  
+app.get('/auth/google/callback', 
+passport.authenticate('google', { failureRedirect: '/login' }),
+function(req, res) {
+  // Successful authentication, redirect home.
   res.redirect('/');
 });
+
+
+
+
+
+// passport.use(new FacebookStrategy({
+//     clientID: '108399119919875',
+//     clientSecret: '1a122f27c879ffa23f0bb2c1a04f7b2b',
+//     callbackURL: "http://localhost:3000/auth/facebook/callback"
+//   },
+//   function(accessToken, refreshToken, profile, cb) {
+//     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+//       return cb(err, user);
+//     });
+//   }
+// ));
+
+//app.get('/login',
+// passport.authenticate('facebook', { failureRedirect: '/login' }),
+// function(req, res) {
+//   // Successful authentication, redirect home. 
+//   app.get('/auth/facebook',
+//   passport.authenticate('facebook', { authType: 'rerequest', scope: ['user_friends', 'manage_pages'] }));
+
+//   new FacebookStrategy({
+//     clientID: FACEBOOK_APP_ID,
+//     clientSecret: FACEBOOK_APP_SECRET,
+//     callbackURL: "http://localhost:3000/auth/facebook/callback",
+//     profileFields: ['id', 'displayName', 'photos', 'email']
+//   }),
+  
+//   res.redirect('/');
+// });
 
 
 
