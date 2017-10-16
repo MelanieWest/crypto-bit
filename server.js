@@ -51,7 +51,6 @@ function(req, res) {
 
 
 
-
 // Set view engine
 var exphbs = require('express-handlebars');
 
@@ -98,170 +97,174 @@ app.get('/charts', (req, res) => {
 
   res.render('index');
   
-      var datax=[];   //date array - used for each graph
+      // var data2x=[];   //date array - ethereum
+      // var data3x=[];   //date array - litecoin
   
-      var data11y=[]; //used for bitcoin
-      var data12y=[];
+ 
+      // var data21y=[]; //used for ethereum
+      // var data22y=[];
   
-      var data21y=[]; //used for ethereum
-      var data22y=[];
-  
-      var data31y=[]; //used for litecoin
-      var data32y=[];
+      // var data31y=[]; //used for litecoin
+      // var data32y=[];
+
   
       for (var i = 0; i < coinData.length; i++) {
-  
+
+          //reinitialize graph data for each loop
+
+        var datax=[];   //date array - used for horizontal data
+        var data1y=[]; //used for coin values
+        var data2y=[];  //used for predictions
+        
+
         //start traversing the object.  identify coin objects
         // and extract data for each coin
        
-      if (coinData[i].name = "bitcoin"){  //if it's bitcoin, do this next block 
-      console.log('bitcoin');  
       
-      for (var ii =0; ii< coinData[i].date.length; ii++){
-        console.log(coinData[i].date.length);
-          datax.push(coinData[i].date[ii]);
-          data11y.push(coinData[i].price[ii]);
-          data12y.push(coinData[i].rating[ii]);
-          switch (data12y[ii]){
+      for (var j =0; j< coinData[i].date.length; j++){
+        //console.log(coinData[i].date.length);
+
+        //graph data is populated once, regardless of which coin is being represented
+          datax.push(coinData[i].date[j]);
+          data1y.push(coinData[i].price[j]);
+          data2y.push(coinData[i].rating[j]);
+
+          //graph setup is different for each coin type:
+
+          if (coinData[i].name = "bitcoin"){  //if it's bitcoin, do this next block 
+          console.log('bitcoin');  
+
+          switch (data2y[j]){
             case -1:
-              data12y[ii] = -200;
+              data2y[j] = -200;
               break;
             case 0:
-              data12y[ii] = 0;
+              data2y[j] = 0;
               break;
             case 1:
-              data12y[ii] = 200;
+              data2y[j] = 200;
               break;
             default:
-              data12y[ii] = 0;
+              data2y[j] = 0;
           } // end of cases for prediction rendering
-      }   //end of block that fills arrays for graphing
+
+          console.log(datax,data1y,data2y);
+  
+        var val1 = {
+          x: datax,
+          y: data1y,
+          name: "Bitcoin Values",
+          type: "scatter"
+        };
+        var pred1 = {
+          x: datax,
+          y: data2y,
+          name: "Predictions",
+          type: "bar"
+        };
+        var bitcoin = [val1, pred1];
+        var graphOptions = {filename: "Bitcoin", fileopt: "overwrite"};
+        plotly.plot(bitcoin, graphOptions, function (err, msg) {
+            console.log(msg);
+        });
       
-     
-     var trace1 = {
-       x: datax,
-       y: data11y,
-       name: "Bitcoin Values",
-       type: "scatter"
-     };
-     var trace2 = {
-       x: datax,
-       y: data12y,
-       name: "Predictions",
-       type: "bar"
-     };
-     var data = [trace1, trace2];
-     var graphOptions = {filename: "Bitcoin", fileopt: "overwrite"};
-     plotly.plot(data, graphOptions, function (err, msg) {
-  //       console.log(msg);
-    });
-  
-  } //end of bitcoin actions
+      } //end of bitcoin actions
+      
+
+      //disable ethereum block with a name typo, for now
+
+  //if (coinData[i].name = "ethereum"){  //if it's ethereum, do this next block 
+  if (coinData[i].name = "ether"){  //if it's ethereum, do this next block 
   
   
-  if (coinData[i].name = "ethereum"){  //if it's ethereum, do this next block 
   console.log('ethereum');
-  for (var jj =0; jj< coinData[i].date.length; jj++){
-    console.log(coinData[i].date.length);
-    datax.push(coinData[i].date[jj]);
-    data21y.push(coinData[i].price[jj]);
-    data22y.push(coinData[i].rating[jj]);
-    switch (data22y[jj]){
+ 
+    switch (data2y[j]){
       case -1:
-        data22y[jj] = -20;
+        data2y[j] = -80;
         break;
       case 0:
-        data22y[jj] = 0;
+        data2y[j] = 0;
         break;
       case 1:
-        data22y[jj] = 20;
+        data2y[j] = 80;
         break;
       default:
-        data22y[jj] = 0;
+        data2y[j] = 0;
     } // end of cases for prediction rendering
-  }   //end of block that fills arrays for graphing
+
+    console.log(datax,data1y,data2y);
+    
+
+      var val2 = {
+        x: datax,
+        y: data1y,
+        name: "Ethereum Values",
+        type: "scatter"
+      };
+      var pred2 = {
+        x: datax,
+        y: data2y,
+        name: "Predictions",
+        type: "bar"
+      };
+      var ethereum = [val2, pred2];
+      var graphOptions = {filename: "Etherium", fileopt: "overwrite"};
+      plotly.plot(ethereum, graphOptions, function (err, msg) {
+         console.log(msg);
+      });
+    }   //end of ethereum block 
+ 
   
    
-     var trace1 = {
-      x: datax,
-      y: data21y,
-      name: "Ethereum Values",
-      type: "scatter"
-    };
-    var trace2 = {
-      x: datax,
-      y: data22y,
-      name: "Predictions",
-      type: "bar"
-    };
-    var data = [trace1, trace2];
-    var graphOptions = {filename: "Etherium", fileopt: "overwrite"};
-    plotly.plot(data, graphOptions, function (err, msg) {
- //       console.log(msg);
-    });
-  
-  }   // end of ethereum block
-  
-  
   if (coinData[i].name = "litecoin"){  //if it's ethereum, do this next block 
   console.log('litecoin');
   
-  for (var kk =0; kk< coinData[i].date.length; kk++){
-    console.log(coinData[i].date.length);
-    
-    datax.push(coinData[i].date[kk]);
-    data31y.push(coinData[i].price[kk]);
-    data32y.push(coinData[i].rating[kk]);
-    switch (data32y[kk]){
+    switch (data2y[j]){
       case -1:
-        data32y[kk] = -20;
+        data2y[j] = -20;
         break;
       case 0:
-        data32y[kk] = 0;
+        data2y[j] = 0;
         break;
       case 1:
-        data32y[kk] = 20;
+        data2y[j] = 20;
         break;
       default:
-        data32y[kk] = 0;
+        data2y[j] = 0;
     } // end of cases for prediction rendering
-  }   //end of filling arrays for graphing
   
-  
-  
- 
-  
-   var trace1 = {
+    console.log(datax,data1y,data2y);
+    
+      
+   var val3 = {
     x: datax,
-    y: data31y,
+    y: data1y,
     name: "LiteCoin Values",
     type: "scatter"
   };
-  var trace2 = {
+  var pred3 = {
     x: datax,
-    y: data32y,
+    y: data2y,
     name: "Predictions",
     type: "bar"
   };
-  var data = [trace1, trace2];
+  var litecoin = [val3, pred3];
   var graphOptions = {filename: "LiteCoin", fileopt: "overwrite"};
-  //  console.log(msg);
-  plotly.plot(data, graphOptions, function (err, msg) {
-    
+  plotly.plot(litecoin, graphOptions, function (err, msg) {
+    console.log(msg);
   });
   
- 
   
   }   //end of litecoin block
   
-  } //end of block that iterates through coinData objects
+  } //end of block that iterates through coinData objects & populates graph data
   
-  
 
-
-
+};    //end of iterating through coins
 
 });
+
 
 
 
